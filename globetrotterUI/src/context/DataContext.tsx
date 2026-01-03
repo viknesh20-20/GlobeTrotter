@@ -217,18 +217,43 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
   // Create trip
   const createTrip = useCallback(async (data: any) => {
+    const tripId = `trip-${Date.now()}`;
+
     if (!useApiMode) {
-      const newTrip = { ...data, id: `trip-${Date.now()}` };
+      const newTrip = { ...data, id: tripId };
       setTrips(prev => [...prev, newTrip]);
+      // Also save to localStorage as backup
+      const existingTrips = JSON.parse(localStorage.getItem('globetrotter-trips') || '[]');
+      localStorage.setItem('globetrotter-trips', JSON.stringify([...existingTrips, newTrip]));
       return newTrip;
     }
 
-    const response = await api.createTrip(data);
-    if (response.data) {
-      setTrips(prev => [...prev, response.data]);
-      return response.data;
+    try {
+      const response = await api.createTrip(data);
+      if (response.data) {
+        // Merge original data with API response to ensure all fields are preserved
+        const mergedTrip = {
+          ...data,
+          ...response.data,
+          id: response.data.id || tripId,
+          cities: response.data.cities || data.cities || [],
+          activities: response.data.activities || data.activities || [],
+        };
+        setTrips(prev => [...prev, mergedTrip]);
+        // Also save to localStorage as backup for offline access
+        const existingTrips = JSON.parse(localStorage.getItem('globetrotter-trips') || '[]');
+        localStorage.setItem('globetrotter-trips', JSON.stringify([...existingTrips, mergedTrip]));
+        return mergedTrip;
+      }
+      throw new Error(response.error || 'Failed to create trip');
+    } catch (error) {
+      // Fallback: if API fails, save locally
+      const localTrip = { ...data, id: tripId };
+      setTrips(prev => [...prev, localTrip]);
+      const existingTrips = JSON.parse(localStorage.getItem('globetrotter-trips') || '[]');
+      localStorage.setItem('globetrotter-trips', JSON.stringify([...existingTrips, localTrip]));
+      return localTrip;
     }
-    throw new Error(response.error || 'Failed to create trip');
   }, [useApiMode]);
 
   // Update trip

@@ -162,10 +162,59 @@ export default function ItineraryView() {
     const getCityData = (cityId: string) => citiesData.cities.find(c => c.id === cityId)
     const getActivityData = (actId: string) => activitiesData.activities.find(a => a.id === actId)
 
-    // Get all days from itinerary
-    const allDays = itinerary?.stops.flatMap((stop: any) => stop.days) || []
+    // Get all days from itinerary - deduplicate by date to avoid duplicate day tabs
+    const allDaysRaw = itinerary?.stops.flatMap((stop: any) => stop.days) || []
+    // Deduplicate by date and sort by dayNumber
+    const allDays = allDaysRaw.reduce((acc: any[], day: any) => {
+        if (!acc.find(d => d.date === day.date)) {
+            acc.push(day)
+        } else {
+            // Merge activities from duplicate days
+            const existing = acc.find(d => d.date === day.date)
+            if (existing && day.activities) {
+                existing.activities = [...(existing.activities || []), ...day.activities]
+            }
+        }
+        return acc
+    }, []).sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    // Re-number days sequentially
+    allDays.forEach((day: any, index: number) => {
+        day.dayNumber = index + 1
+    })
 
     // Following Screen 9: Itinerary for a selected place with Day tabs and expense breakdown
+
+    // Helper to parse date string properly
+    const parseDate = (dateStr: string) => {
+        if (!dateStr) return new Date()
+
+        // Try native Date parsing first
+        const nativeDate = new Date(dateStr)
+        if (!isNaN(nativeDate.getTime())) {
+            return nativeDate
+        }
+
+        // Try YYYY-MM-DD format
+        if (dateStr.includes('-') && dateStr.split('-')[0].length === 4) {
+            const parts = dateStr.split('-').map(Number)
+            if (parts.length === 3) {
+                return new Date(parts[0], parts[1] - 1, parts[2])
+            }
+        }
+
+        // Try DD/MM/YYYY format
+        if (dateStr.includes('/')) {
+            const parts = dateStr.split('/').map(Number)
+            if (parts.length === 3) {
+                // Assume DD/MM/YYYY
+                return new Date(parts[2], parts[1] - 1, parts[0])
+            }
+        }
+
+        // Fallback to current date
+        return new Date()
+    }
+
     return (
         <div className="animate-fade-in">
             {/* Trip Header */}
@@ -186,7 +235,7 @@ export default function ItineraryView() {
                         <div className="flex flex-wrap gap-4 text-white/80 text-sm">
                             <span className="flex items-center gap-1">
                                 <Calendar className="w-4 h-4" />
-                                {new Date(trip.startDate).toLocaleDateString()} - {new Date(trip.endDate).toLocaleDateString()}
+                                {parseDate(trip.startDate).toLocaleDateString()} - {parseDate(trip.endDate).toLocaleDateString()}
                             </span>
                             <span className="flex items-center gap-1">
                                 <MapPin className="w-4 h-4" />
@@ -306,16 +355,54 @@ export default function ItineraryView() {
                         /* Calendar Grid View - Full Month Logic */
                         <div className="space-y-6">
                             {(() => {
+                                // Helper to parse date string properly
+                                const parseDate = (dateStr: string) => {
+                                    if (!dateStr) return new Date()
+
+                                    // Try native Date parsing first
+                                    const nativeDate = new Date(dateStr)
+                                    if (!isNaN(nativeDate.getTime())) {
+                                        return nativeDate
+                                    }
+
+                                    // Try YYYY-MM-DD format
+                                    if (dateStr.includes('-') && dateStr.split('-')[0].length === 4) {
+                                        const parts = dateStr.split('-').map(Number)
+                                        if (parts.length === 3) {
+                                            return new Date(parts[0], parts[1] - 1, parts[2])
+                                        }
+                                    }
+
+                                    // Try DD/MM/YYYY format
+                                    if (dateStr.includes('/')) {
+                                        const parts = dateStr.split('/').map(Number)
+                                        if (parts.length === 3) {
+                                            // Assume DD/MM/YYYY
+                                            return new Date(parts[2], parts[1] - 1, parts[0])
+                                        }
+                                    }
+
+                                    // Fallback to current date
+                                    return new Date()
+                                }
+
                                 // Identify months
                                 const months: string[] = []
-                                const start = new Date(trip.startDate)
-                                const end = new Date(trip.endDate)
+                                const start = parseDate(trip.startDate)
+                                const end = parseDate(trip.endDate)
+
+                                // Ensure we have valid dates
+                                if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+                                    return <p className="text-gray-500">Invalid trip dates</p>
+                                }
 
                                 const current = new Date(start)
                                 current.setDate(1) // Start at the beginning of the start month
 
                                 while (current <= end || (current.getMonth() === end.getMonth() && current.getFullYear() === end.getFullYear())) {
-                                    months.push(current.toISOString().substring(0, 7))
+                                    const yearNum = current.getFullYear()
+                                    const monthNum = current.getMonth() + 1 // 1-indexed
+                                    months.push(`${yearNum}-${String(monthNum).padStart(2, '0')}`)
                                     current.setMonth(current.getMonth() + 1)
                                 }
 
@@ -454,20 +541,29 @@ export default function ItineraryView() {
                     <div className="card p-6">
                         <h3 className="text-lg font-semibold text-dark-900 dark:text-white mb-4">Destinations</h3>
                         <div className="space-y-3">
-                            {trip.cities.map(cityId => {
-                                const city = getCityData(cityId)
-                                if (!city) return null
-                                return (
-                                    <div key={cityId} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
-                                        <img src={city.image} alt={city.name} className="w-12 h-12 rounded-lg object-cover" />
-                                        <div className="flex-1">
-                                            <p className="font-medium text-dark-900 dark:text-white">{city.name}</p>
-                                            <p className="text-sm text-gray-500 dark:text-slate-400">{city.country}</p>
+                            {trip.cities && trip.cities.length > 0 ? (
+                                trip.cities.map(cityId => {
+                                    const city = getCityData(cityId)
+                                    if (!city) return null
+                                    return (
+                                        <div key={cityId} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                                            <img src={city.image} alt={city.name} className="w-12 h-12 rounded-lg object-cover" />
+                                            <div className="flex-1">
+                                                <p className="font-medium text-dark-900 dark:text-white">{city.name}</p>
+                                                <p className="text-sm text-gray-500 dark:text-slate-400">{city.country}</p>
+                                            </div>
+                                            <ChevronRight className="w-4 h-4 text-gray-400 dark:text-slate-500" />
                                         </div>
-                                        <ChevronRight className="w-4 h-4 text-gray-400 dark:text-slate-500" />
-                                    </div>
-                                )
-                            })}
+                                    )
+                                })
+                            ) : (
+                                <div className="text-center py-4">
+                                    <p className="text-gray-500 dark:text-slate-400 text-sm mb-2">No destinations added yet</p>
+                                    <Link to={`/trips/${id}/edit`} className="text-orange-500 hover:underline text-sm font-medium">
+                                        + Add destinations
+                                    </Link>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

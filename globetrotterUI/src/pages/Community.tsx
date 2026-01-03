@@ -61,6 +61,9 @@ export default function Community() {
                 coverImage: p.coverImage || p.cover_image || 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600',
                 userId: p.userId || p.user_id || 'unknown',
                 tripId: p.tripId || p.trip_id || null,
+                likes: typeof p.likes === 'number' ? p.likes : 0,
+                comments: p.comments || [],
+                tags: p.tags || [],
                 createdAt: p.createdAt || p.created_at || new Date().toISOString()
             })) as CommunityPost[])
         }
@@ -337,11 +340,19 @@ export default function Community() {
 
                     {/* Posts */}
                     {filteredPosts.map(post => {
-                        const postUser = getUser(post.userId)
+                        const postUser = getUser(post.userId) || {
+                            id: 'unknown',
+                            firstName: 'Unknown',
+                            lastName: 'User',
+                            email: '',
+                            image: null
+                        }
                         const allComments = [...post.comments, ...(localComments[post.id] || [])]
                         const isLiked = likedPosts.includes(post.id)
                         const isSaved = savedPosts.includes(post.id)
-                        const likeCount = post.likes + (isLiked ? 1 : 0)
+                        // Ensure likes is a number
+                        const currentLikes = typeof post.likes === 'number' ? post.likes : 0
+                        const likeCount = currentLikes + (isLiked ? 1 : 0)
 
                         return (
                             <motion.div
