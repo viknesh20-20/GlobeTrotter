@@ -1,0 +1,220 @@
+{
+    "itineraries": [
+        {
+            "id": "itin-001",
+            "tripId": "trip-001",
+            "stops": [
+                {
+                    "id": "stop-001",
+                    "cityId": "city-001",
+                    "order": 1,
+                    "arrivalDate": "2026-03-15",
+                    "departureDate": "2026-03-19",
+                    "days": [
+                        {
+                            "date": "2026-03-15",
+                            "dayNumber": 1,
+                            "activities": [
+                                {
+                                    "activityId": "act-001",
+                                    "startTime": "14:00",
+                                    "endTime": "17:00",
+                                    "notes": "Booked sunset tickets",
+                                    "cost": 26
+                                }
+                            ],
+                            "expenses": {
+                                "accommodation": 150,
+                                "food": 60,
+                                "transport": 30,
+                                "activities": 26,
+                                "other": 0
+                            }
+                        },
+                        {
+                            "date": "2026-03-16",
+                            "dayNumber": 2,
+                            "activities": [
+                                {
+                                    "activityId": "act-002",
+                                    "startTime": "09:00",
+                                    "endTime": "13:00",
+                                    "notes": "Skip-the-line tickets",
+                                    "cost": 17
+                                },
+                                {
+                                    "activityId": "act-003",
+                                    "startTime": "18:00",
+                                    "endTime": "20:00",
+                                    "notes": "Dinner cruise",
+                                    "cost": 75
+                                }
+                            ],
+                            "expenses": {
+                                "accommodation": 150,
+                                "food": 80,
+                                "transport": 25,
+                                "activities": 92,
+                                "other": 20
+                            }
+                        },
+                        {
+                            "date": "2026-03-17",
+                            "dayNumber": 3,
+                            "activities": [],
+                            "expenses": {
+                                "accommodation": 150,
+                                "food": 70,
+                                "transport": 40,
+                                "activities": 0,
+                                "other": 50
+                            }
+                        },
+                        {
+                            "date": "2026-03-18",
+                            "dayNumber": 4,
+                            "activities": [],
+                            "expenses": {
+                                "accommodation": 150,
+                                "food": 65,
+                                "transport": 35,
+                                "activities": 45,
+                                "other": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "stop-002",
+                    "cityId": "city-004",
+                    "order": 2,
+                    "arrivalDate": "2026-03-19",
+                    "departureDate": "2026-03-22",
+                    "days": [
+                        {
+                            "date": "2026-03-19",
+                            "dayNumber": 5,
+                            "activities": [
+                                {
+                                    "activityId": "act-010",
+                                    "startTime": "10:00",
+                                    "endTime": "13:00",
+                                    "notes": "Morning tour",
+                                    "cost": 26
+                                }
+                            ],
+                            "expenses": {
+                                "accommodation": 120,
+                                "food": 50,
+                                "transport": 45,
+                                "activities": 26,
+                                "other": 0
+                            }
+                        },
+                        {
+                            "date": "2026-03-20",
+                            "dayNumber": 6,
+                            "activities": [
+                                {
+                                    "activityId": "act-011",
+                                    "startTime": "09:00",
+                                    "endTime": "11:00",
+                                    "notes": "",
+                                    "cost": 30
+                                }
+                            ],
+                            "expenses": {
+                                "accommodation": 120,
+                                "food": 55,
+                                "transport": 20,
+                                "activities": 30,
+                                "other": 30
+                            }
+                        },
+                        {
+                            "date": "2026-03-21",
+                            "dayNumber": 7,
+                            "activities": [],
+                            "expenses": {
+                                "accommodation": 120,
+                                "food": 60,
+                                "transport": 25,
+                                "activities": 40,
+                                "other": 15
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "stop-003",
+                    "cityId": "city-007",
+                    "order": 3,
+                    "arrivalDate": "2026-03-22",
+                    "departureDate": "2026-03-25",
+                    "days": [
+                        {
+                            "date": "2026-03-22",
+                            "dayNumber": 8,
+                            "activities": [
+                                {
+                                    "activityId": "act-016",
+                                    "startTime": "09:00",
+                                    "endTime": "12:00",
+                                    "notes": "",
+                                    "cost": 22
+                                }
+                            ],
+                            "expenses": {
+                                "accommodation": 130,
+                                "food": 55,
+                                "transport": 50,
+                                "activities": 22,
+                                "other": 0
+                            }
+                        },
+                        {
+                            "date": "2026-03-23",
+                            "dayNumber": 9,
+                            "activities": [
+                                {
+                                    "activityId": "act-017",
+                                    "startTime": "08:00",
+                                    "endTime": "12:00",
+                                    "notes": "Early entry booked",
+                                    "cost": 28
+                                }
+                            ],
+                            "expenses": {
+                                "accommodation": 130,
+                                "food": 60,
+                                "transport": 30,
+                                "activities": 28,
+                                "other": 25
+                            }
+                        },
+                        {
+                            "date": "2026-03-24",
+                            "dayNumber": 10,
+                            "activities": [],
+                            "expenses": {
+                                "accommodation": 130,
+                                "food": 70,
+                                "transport": 35,
+                                "activities": 55,
+                                "other": 40
+                            }
+                        }
+                    ]
+                }
+            ],
+            "totalCost": {
+                "accommodation": 1350,
+                "food": 625,
+                "transport": 335,
+                "activities": 364,
+                "other": 180,
+                "grand": 2854
+            }
+        }
+    ]
+}

@@ -1,0 +1,87 @@
+{
+    "posts": [
+        {
+            "id": "post-001",
+            "userId": "user-001",
+            "tripId": "trip-003",
+            "title": "NYC Weekend Getaway - Must Do List!",
+            "description": "Had an amazing 3 days in New York! Here's everything we did and loved.",
+            "coverImage": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
+            "likes": 42,
+            "saves": 18,
+            "comments": [
+                {
+                    "id": "comment-001",
+                    "userId": "admin-001",
+                    "text": "Great itinerary! Adding this to my bucket list.",
+                    "createdAt": "2025-10-12T14:30:00Z"
+                }
+            ],
+            "tags": [
+                "weekend",
+                "nyc",
+                "budget-friendly"
+            ],
+            "createdAt": "2025-10-10T18:00:00Z"
+        },
+        {
+            "id": "post-002",
+            "userId": "user-001",
+            "tripId": "trip-004",
+            "title": "Two Weeks in Japan - Complete Guide",
+            "description": "Everything you need to know for an unforgettable Japan trip. From temples to tech!",
+            "coverImage": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800",
+            "likes": 87,
+            "saves": 45,
+            "comments": [
+                {
+                    "id": "comment-002",
+                    "userId": "admin-001",
+                    "text": "Cherry blossom season is the best!",
+                    "createdAt": "2025-04-22T09:15:00Z"
+                }
+            ],
+            "tags": [
+                "japan",
+                "culture",
+                "food",
+                "adventure"
+            ],
+            "createdAt": "2025-04-20T14:00:00Z"
+        },
+        {
+            "id": "post-003",
+            "userId": "admin-001",
+            "tripId": null,
+            "title": "Top 10 Budget Travel Tips for 2026",
+            "description": "Save money while exploring the world with these proven strategies.",
+            "coverImage": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800",
+            "likes": 156,
+            "saves": 89,
+            "comments": [],
+            "tags": [
+                "tips",
+                "budget",
+                "guide"
+            ],
+            "createdAt": "2025-12-15T10:00:00Z"
+        }
+    ],
+    "featuredDestinations": [
+        {
+            "cityId": "city-001",
+            "reason": "Most saved destination this month",
+            "order": 1
+        },
+        {
+            "cityId": "city-002",
+            "reason": "Trending for spring travel",
+            "order": 2
+        },
+        {
+            "cityId": "city-005",
+            "reason": "Best value destination",
+            "order": 3
+        }
+    ]
+}

@@ -1,0 +1,102 @@
+{
+    "trips": [
+        {
+            "id": "trip-001",
+            "userId": "user-001",
+            "name": "European Adventure",
+            "description": "A 10-day journey through the most iconic cities of Western Europe.",
+            "coverImage": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800",
+            "startDate": "2026-03-15",
+            "endDate": "2026-03-25",
+            "status": "upcoming",
+            "totalBudget": 3500,
+            "estimatedCost": 3200,
+            "cities": [
+                "city-001",
+                "city-004",
+                "city-007"
+            ],
+            "isPublic": true,
+            "likes": 24,
+            "createdAt": "2025-12-01T10:00:00Z",
+            "updatedAt": "2025-12-28T15:30:00Z"
+        },
+        {
+            "id": "trip-002",
+            "userId": "user-001",
+            "name": "Southeast Asia Escape",
+            "description": "Exploring the vibrant cultures and stunning landscapes of Thailand and Indonesia.",
+            "coverImage": "https://images.unsplash.com/photo-1528181304800-259b08848526?w=800",
+            "startDate": "2026-01-10",
+            "endDate": "2026-01-20",
+            "status": "ongoing",
+            "totalBudget": 2000,
+            "estimatedCost": 1850,
+            "cities": [
+                "city-010",
+                "city-005"
+            ],
+            "isPublic": false,
+            "likes": 0,
+            "createdAt": "2025-11-15T08:00:00Z",
+            "updatedAt": "2026-01-02T09:00:00Z"
+        },
+        {
+            "id": "trip-003",
+            "userId": "user-001",
+            "name": "NYC Weekend Getaway",
+            "description": "A quick but memorable 3-day trip to the Big Apple.",
+            "coverImage": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
+            "startDate": "2025-10-05",
+            "endDate": "2025-10-08",
+            "status": "completed",
+            "totalBudget": 1500,
+            "estimatedCost": 1380,
+            "cities": [
+                "city-003"
+            ],
+            "isPublic": true,
+            "likes": 42,
+            "createdAt": "2025-09-01T12:00:00Z",
+            "updatedAt": "2025-10-10T18:00:00Z"
+        },
+        {
+            "id": "trip-004",
+            "userId": "user-001",
+            "name": "Japan Discovery",
+            "description": "Two weeks exploring ancient temples, modern cities, and Japanese cuisine.",
+            "coverImage": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800",
+            "startDate": "2025-04-01",
+            "endDate": "2025-04-15",
+            "status": "completed",
+            "totalBudget": 4000,
+            "estimatedCost": 3750,
+            "cities": [
+                "city-002"
+            ],
+            "isPublic": true,
+            "likes": 87,
+            "createdAt": "2025-02-15T09:00:00Z",
+            "updatedAt": "2025-04-20T14:00:00Z"
+        },
+        {
+            "id": "trip-005",
+            "userId": "user-001",
+            "name": "Australian Adventure",
+            "description": "Sydney beaches, Great Barrier Reef, and outback exploration.",
+            "coverImage": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800",
+            "startDate": "2026-06-01",
+            "endDate": "2026-06-14",
+            "status": "upcoming",
+            "totalBudget": 5000,
+            "estimatedCost": 4500,
+            "cities": [
+                "city-008"
+            ],
+            "isPublic": false,
+            "likes": 0,
+            "createdAt": "2025-12-20T16:00:00Z",
+            "updatedAt": "2025-12-20T16:00:00Z"
+        }
+    ]
+}

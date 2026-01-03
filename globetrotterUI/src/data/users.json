@@ -1,0 +1,51 @@
+{
+    "demoCredentials": {
+        "email": "demo@globetrotter.com",
+        "password": "demo123"
+    },
+    "users": [
+        {
+            "id": "user-1",
+            "email": "demo@globetrotter.com",
+            "password": "demo123",
+            "firstName": "Alex",
+            "lastName": "Wanderer",
+            "phone": "+1 (555) 123-4567",
+            "city": "San Francisco",
+            "country": "United States",
+            "avatar": null,
+            "bio": "Avid traveler exploring the world one city at a time.",
+            "preferences": {
+                "currency": "USD",
+                "language": "en",
+                "notifications": true
+            },
+            "savedDestinations": [
+                "city-1",
+                "city-3"
+            ],
+            "role": "traveler",
+            "createdAt": "2024-01-01T00:00:00Z"
+        },
+        {
+            "id": "admin-001",
+            "email": "admin@globetrotter.com",
+            "password": "admin123",
+            "firstName": "Sarah",
+            "lastName": "Admin",
+            "phone": "+1 (555) 987-6543",
+            "city": "New York",
+            "country": "United States",
+            "avatar": null,
+            "bio": "Platform administrator",
+            "preferences": {
+                "currency": "USD",
+                "language": "en",
+                "notifications": true
+            },
+            "savedDestinations": [],
+            "role": "admin",
+            "createdAt": "2024-01-01T00:00:00Z"
+        }
+    ]
+}

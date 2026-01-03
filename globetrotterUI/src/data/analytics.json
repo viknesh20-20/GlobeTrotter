@@ -1,0 +1,192 @@
+{
+    "overview": {
+        "totalUsers": 12847,
+        "totalTrips": 34521,
+        "totalCitiesVisited": 156,
+        "averageTripsPerUser": 2.7,
+        "platformGrowth": 23.5
+    },
+    "userStats": {
+        "newUsersThisMonth": 1245,
+        "activeUsersThisMonth": 8934,
+        "userRetentionRate": 78.3,
+        "monthlyGrowth": [
+            {
+                "month": "Jul",
+                "users": 8200
+            },
+            {
+                "month": "Aug",
+                "users": 9100
+            },
+            {
+                "month": "Sep",
+                "users": 9800
+            },
+            {
+                "month": "Oct",
+                "users": 10500
+            },
+            {
+                "month": "Nov",
+                "users": 11600
+            },
+            {
+                "month": "Dec",
+                "users": 12847
+            }
+        ]
+    },
+    "tripStats": {
+        "tripsCreatedThisMonth": 2340,
+        "averageTripDuration": 7.2,
+        "averageBudget": 2850,
+        "tripsByStatus": {
+            "completed": 18234,
+            "ongoing": 3421,
+            "upcoming": 12866
+        },
+        "monthlyTrips": [
+            {
+                "month": "Jul",
+                "trips": 1800
+            },
+            {
+                "month": "Aug",
+                "trips": 2100
+            },
+            {
+                "month": "Sep",
+                "trips": 1950
+            },
+            {
+                "month": "Oct",
+                "trips": 2050
+            },
+            {
+                "month": "Nov",
+                "trips": 2180
+            },
+            {
+                "month": "Dec",
+                "trips": 2340
+            }
+        ]
+    },
+    "popularCities": [
+        {
+            "cityId": "city-001",
+            "name": "Paris",
+            "visits": 4521,
+            "change": 12
+        },
+        {
+            "cityId": "city-002",
+            "name": "Tokyo",
+            "visits": 3890,
+            "change": 18
+        },
+        {
+            "cityId": "city-003",
+            "name": "New York",
+            "visits": 3654,
+            "change": 8
+        },
+        {
+            "cityId": "city-009",
+            "name": "London",
+            "visits": 3210,
+            "change": 5
+        },
+        {
+            "cityId": "city-004",
+            "name": "Barcelona",
+            "visits": 2876,
+            "change": 22
+        }
+    ],
+    "popularActivities": [
+        {
+            "activityId": "act-010",
+            "name": "Sagrada Família Tour",
+            "bookings": 2341
+        },
+        {
+            "activityId": "act-001",
+            "name": "Eiffel Tower Visit",
+            "bookings": 2187
+        },
+        {
+            "activityId": "act-016",
+            "name": "Colosseum Guided Tour",
+            "bookings": 1965
+        },
+        {
+            "activityId": "act-005",
+            "name": "Senso-ji Temple Visit",
+            "bookings": 1823
+        },
+        {
+            "activityId": "act-009",
+            "name": "Broadway Show",
+            "bookings": 1654
+        }
+    ],
+    "revenueData": {
+        "currency": "USD",
+        "monthlyRevenue": [
+            {
+                "month": "Jul",
+                "revenue": 45000
+            },
+            {
+                "month": "Aug",
+                "revenue": 52000
+            },
+            {
+                "month": "Sep",
+                "revenue": 48000
+            },
+            {
+                "month": "Oct",
+                "revenue": 55000
+            },
+            {
+                "month": "Nov",
+                "revenue": 62000
+            },
+            {
+                "month": "Dec",
+                "revenue": 71000
+            }
+        ],
+        "totalRevenue": 333000,
+        "projectedGrowth": 15.2
+    },
+    "recentActivity": [
+        {
+            "id": "activity-001",
+            "type": "trip_created",
+            "userId": "user-001",
+            "userName": "Alex Wanderer",
+            "description": "Created trip 'Australian Adventure'",
+            "timestamp": "2025-12-20T16:00:00Z"
+        },
+        {
+            "id": "activity-002",
+            "type": "user_registered",
+            "userId": "user-new",
+            "userName": "Emily Chen",
+            "description": "Joined GlobeTrotter",
+            "timestamp": "2025-12-20T14:30:00Z"
+        },
+        {
+            "id": "activity-003",
+            "type": "trip_shared",
+            "userId": "user-001",
+            "userName": "Alex Wanderer",
+            "description": "Shared 'Japan Discovery' to community",
+            "timestamp": "2025-12-19T11:00:00Z"
+        }
+    ]
+}
